@@ -1,0 +1,8 @@
+call pathogen#infect()
+call pathogen#helptags()
+
+syntax enable
+set number
+set t_Co=256  " make use of 256 terminal colors 
+color summerfruit256
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip,~/.pythonbrew/*
