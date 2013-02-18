@@ -7,3 +7,4 @@ set t_Co=256  " make use of 256 terminal colors
 color summerfruit256
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,~/.pythonbrew/*
 let mapleader=","
+let g:ctrlp_user_command = "find %s -type f | egrep -v '/\.(git|hg|svn)|solr|tmp/' | egrep -v '\.(png|exe|jpg|gif|jar|class|swp|swo|log|gitkep|keepme|so|o|pyc)$'"
