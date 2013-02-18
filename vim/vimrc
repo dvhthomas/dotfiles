@@ -1,10 +1,26 @@
-call pathogen#infect()
-call pathogen#helptags()
+"call pathogen#infect()
+"call pathogen#helptags()
+
+filetype on " not on by default in Mac, so stop it barfing when we try to...
+filetype off " ...turn it off!
+
+" Bundle setup
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+Bundle 'gmarik/vundle'
+Bundle 'davidhalter/jedi-vim'
+Bundle 'tpope/vim-sensible'
+Bundle 'kien/ctrlp.vim'
+
+filetype plugin indent on " required for Bundle to work
 
 syntax enable
 set number
 set t_Co=256  " make use of 256 terminal colors 
 color summerfruit256
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip,~/.pythonbrew/*
 let mapleader=","
-let g:ctrlp_user_command = "find %s -type f | egrep -v '/\.(git|hg|svn)|solr|tmp/' | egrep -v '\.(png|exe|jpg|gif|jar|class|swp|swo|log|gitkep|keepme|so|o|pyc)$'"
+let g:ctrlp_user_command = "find %s -type f | egrep -v '/\.(git|hg|svn|pythonbrew)|solr|tmp/' | egrep -v '\.(png|exe|jpg|gif|jar|class|swp|swo|log|gitkep|keepme|so|o|pyc|zip|swp)$'"
+
+" show whitespace
+set list
+set listchars=tab:>.,trail:.,extends:#,nbsp:. " show whitespace
