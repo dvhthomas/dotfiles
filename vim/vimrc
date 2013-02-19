@@ -10,6 +10,7 @@ Bundle 'davidhalter/jedi-vim'
 Bundle 'tpope/vim-sensible'
 Bundle 'kien/ctrlp.vim'
 Bundle 'scrooloose/nerdtree'
+"Bundle 'hallettj/jslint.vim'
 filetype plugin indent on " required for Bundle to work
 
 syntax enable
@@ -18,6 +19,9 @@ set t_Co=256  " make use of 256 terminal colors
 color summerfruit256
 let mapleader=","
 let g:ctrlp_user_command = "find %s -type f | egrep -v '/\.(git|hg|svn|pythonbrew)|solr|tmp/' | egrep -v '\.(png|exe|jpg|gif|jar|class|swp|swo|log|gitkep|keepme|so|o|pyc|zip|swp|un~)$'"
+
+" ,r will reload the ~/.vimrc file
+map <leader>r :so $MYVIMRC<CR>
 
 " show whitespace
 set list
