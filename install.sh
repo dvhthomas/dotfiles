@@ -16,7 +16,7 @@ git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
 pip install jedi
 
 # Install the bundles
-vim +BundleInstall
+vim +BundleInstall +qall
 
 # All vim plugins managed as Git submodules. Grab the lot
 cd ~/dotfiles

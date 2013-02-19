@@ -9,9 +9,7 @@ This is where I keep my handy dandy configs for various tools on Mac OS and Linu
 
 ## Instructions
 
-1. `mkdir ~/projects`
-1. `cd ~/projects`
+1. `cd ~/`
 1. `git clone https://github.com/dvhthomas/dotfiles`
-1. `cd dotfiles`
-1. `chmod +x install.sh`
-1. `./install.sh`
+1. `chmod +x dotfiles/install.sh`
+1. `dotfiles/install.sh`
