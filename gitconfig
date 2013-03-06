@@ -1,3 +1,7 @@
 [user]
 	name = Dylan Thomas
 	email = dvhthomas@gmail.com
+[color]
+	ui = true
+[core]
+	pager = less

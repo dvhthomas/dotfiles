@@ -24,8 +24,8 @@ export PATH=/usr/local/share/python:$PATH
 set -o vi
 #alias vim='mvim -v'
 alias tmux="TERM=screen-256color-bce tmux"
-
 export EDITOR=vim
+
 
 #export PYTHONPATH=/Library/Python/2.7/site-packages/PIL
 #export PYTHONPATH=/Library/Python/2.7/site-packages/gdata
