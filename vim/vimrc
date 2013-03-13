@@ -1,3 +1,4 @@
+set encoding=utf-8
 filetype on " not on by default in Mac, so stop it barfing when we try to...
 filetype off " ...turn it off!
 
@@ -13,9 +14,15 @@ Bundle 'scrooloose/nerdtree'
 "Bundle 'hallettj/jslint.vim'
 filetype plugin indent on " required for Bundle to work
 
+" Use spaces instead of tabs
+set tabstop=4
+set shiftwidth=4
+set softtabstop=4
+set expandtab
+
 syntax enable
 set number
-set t_Co=256  " make use of 256 terminal colors 
+set t_Co=256  " make use of 256 terminal colors
 color summerfruit256
 let mapleader=","
 let g:ctrlp_user_command = "find %s -type f | egrep -v '/\.(git|hg|svn|pythonbrew)|solr|tmp/' | egrep -v '\.(png|exe|jpg|gif|jar|class|swp|swo|log|gitkep|keepme|so|o|pyc|zip|swp|un~)$'"
@@ -24,8 +31,9 @@ let g:ctrlp_user_command = "find %s -type f | egrep -v '/\.(git|hg|svn|pythonbre
 map <leader>r :so $MYVIMRC<CR>
 
 " show whitespace
+set listchars=tab:→.,trail:.,extends:#,nbsp:.,precedes:<
 set list
-set listchars=tab:>.,trail:.,extends:#,nbsp:. " show whitespace
+highlight SpecialKey term=standout ctermfg=grey ctermbg=yellow guifg=grey guibg=yellow
 
 " NERDTree shortcut
 map <leader>nt :NERDTreeToggle<CR>
