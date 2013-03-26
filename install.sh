@@ -12,7 +12,14 @@ ln -s ~/dotfiles/tmux-osx.conf ~/.tmux-osx.conf
 
 # HomeBrew on the Mac to install
 if [[ "$OSTYPE" == "darwin"* ]]; then
+    # handle tmux clipboard nicely
     brew install reattach-to-user-namespace
+    # get patched fonts for powerline
+    cd ~/dotfiles
+    git clone https://github.com/Lokaltog/powerline-fonts
+    cd $OLDPWD
+else
+    echo "Linux"
 fi
 
 # Managing all bundles with vundle...
