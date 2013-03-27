@@ -13,6 +13,7 @@ Bundle 'kien/ctrlp.vim'
 Bundle 'scrooloose/nerdtree'
 Bundle 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
 Bundle 'klen/python-mode'
+Bundle 'SirVer/ultisnips'
 filetype plugin indent on " required for Bundle to work
 
 " Use spaces instead of tabs
@@ -22,7 +23,10 @@ set softtabstop=4
 set expandtab
 
 syntax enable
+" Turn on line numbers
 set number
+" allow switching from an unsaved buffer without first having to save it
+set hidden
 set t_Co=256  " make use of 256 terminal colors
 color summerfruit256
 let mapleader=","
@@ -36,8 +40,34 @@ set listchars=tab:→.,trail:.,extends:#,nbsp:.,precedes:<
 set list
 highlight SpecialKey term=standout ctermfg=grey ctermbg=yellow guifg=grey guibg=yellow
 
+" Filetype specific tabs and spaces
+" Only do this part when compiled with support for autocommands
+if has("autocmd")
+  " Enable file type detection
+    filetype on
+    " Syntax of these languages is fussy over tabs Vs spaces
+    autocmd FileType make setlocal ts=8 sts=8 sw=8 noexpandtab
+    autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
+
+    " Customisations based on house-style (arbitrary)
+    autocmd FileType html setlocal ts=2 sts=2 sw=2 expandtab
+    autocmd FileType css setlocal ts=2 sts=2 sw=2 expandtab
+    autocmd FileType javascript setlocal ts=4 sts=4 sw=4 noexpandtab
+    " Treat .rss files as XML
+    autocmd BufNewFile,BufRead *.rss setfiletype xml
+endif
+
+" When pasting text, Vim tries to follow indenting/alingment rules.
+" To paste a chunk of text without having it be smart, hit f2 before
+" and after.
+set pastetoggle=<F2>
+
+" Ignore a bunch of typical stuff I never want to see in an editor
+set wildignore=*.swp,*.bak,*.pyc,*.class
+
 " NERDTree shortcut
 map <leader>nt :NERDTreeToggle<CR>
+let NERDTreeIgnore=['\.vim$', '.swp$', '.pyc$', '.bak$', '.class$', '.d$[[dir]]', '.o$[[file]]']
 
 " Make Powerline look great
 set laststatus=2 " always display the status line
