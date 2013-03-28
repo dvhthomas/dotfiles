@@ -3,4 +3,4 @@
 DS_Store
 .ropeproject/
 node_modules/**
-
+vim/bundle/.vundle/
