@@ -14,6 +14,11 @@ Bundle 'scrooloose/nerdtree'
 Bundle 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
 Bundle 'klen/python-mode'
 Bundle 'SirVer/ultisnips'
+" Requires a javascript interpreter
+" which is already on Mac OSX, and can be installed
+" on Linux using `sudo apt-get install spidermonkey-bin`
+Bundle 'wookiehangover/jshint.vim'
+"Bundle 'sleistner/vim-jshint'
 filetype plugin indent on " required for Bundle to work
 
 " Use spaces instead of tabs
@@ -52,7 +57,6 @@ if has("autocmd")
     " Customisations based on house-style (arbitrary)
     autocmd FileType html setlocal ts=2 sts=2 sw=2 expandtab
     autocmd FileType css setlocal ts=2 sts=2 sw=2 expandtab
-    autocmd FileType javascript setlocal ts=4 sts=4 sw=4 noexpandtab
     " Treat .rss files as XML
     autocmd BufNewFile,BufRead *.rss setfiletype xml
 endif

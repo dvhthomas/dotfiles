@@ -20,6 +20,12 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
     cd $OLDPWD
 else
     echo "Linux"
+    # nodejs stuff for jshint vim plugin
+    sudo apt-get install python-software-properties python g++ make
+    sudo apt-get update
+    sudo apt-get install nodejs
+    curl https://npmjs.org/install.sh | sudo sh
+    sudo npm install -g jshint
 fi
 
 # Managing all bundles with vundle...
