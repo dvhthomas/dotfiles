@@ -12,7 +12,20 @@ ln -s ~/dotfiles/tmux-osx.conf ~/.tmux-osx.conf
 
 # HomeBrew on the Mac to install
 if [[ "$OSTYPE" == "darwin"* ]]; then
+    # handle tmux clipboard nicely
     brew install reattach-to-user-namespace
+    # get patched fonts for powerline
+    cd ~/dotfiles
+    git clone https://github.com/Lokaltog/powerline-fonts
+    cd $OLDPWD
+else
+    echo "Linux"
+    # nodejs stuff for jshint vim plugin
+    sudo apt-get install python-software-properties python g++ make
+    sudo apt-get update
+    sudo apt-get install nodejs
+    curl https://npmjs.org/install.sh | sudo sh
+    sudo npm install -g jshint
 fi
 
 # Managing all bundles with vundle...

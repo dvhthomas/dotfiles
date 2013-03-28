@@ -11,7 +11,16 @@ Bundle 'davidhalter/jedi-vim'
 Bundle 'tpope/vim-sensible'
 Bundle 'kien/ctrlp.vim'
 Bundle 'scrooloose/nerdtree'
-"Bundle 'hallettj/jslint.vim'
+Bundle 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
+Bundle 'klen/python-mode'
+Bundle 'SirVer/ultisnips'
+" Requires a javascript interpreter
+" which is already on Mac OSX, and can be installed
+" on Linux using `sudo apt-get install spidermonkey-bin`
+Bundle 'wookiehangover/jshint.vim'
+" Multi-language syntax checking. Make sure you install
+" language specific plugins, e.g., pip install flake8
+Bundle 'scrooloose/syntastic'
 filetype plugin indent on " required for Bundle to work
 
 " Use spaces instead of tabs
@@ -21,7 +30,10 @@ set softtabstop=4
 set expandtab
 
 syntax enable
+" Turn on line numbers
 set number
+" allow switching from an unsaved buffer without first having to save it
+set hidden
 set t_Co=256  " make use of 256 terminal colors
 color summerfruit256
 let mapleader=","
@@ -35,6 +47,98 @@ set listchars=tab:→.,trail:.,extends:#,nbsp:.,precedes:<
 set list
 highlight SpecialKey term=standout ctermfg=grey ctermbg=yellow guifg=grey guibg=yellow
 
+" Filetype specific tabs and spaces
+" Only do this part when compiled with support for autocommands
+if has("autocmd")
+  " Enable file type detection
+    filetype on
+    " Syntax of these languages is fussy over tabs Vs spaces
+    autocmd FileType make setlocal ts=8 sts=8 sw=8 noexpandtab
+    autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
+
+    " Customisations based on house-style (arbitrary)
+    autocmd FileType html setlocal ts=2 sts=2 sw=2 expandtab
+    autocmd FileType css setlocal ts=2 sts=2 sw=2 expandtab
+    " Treat .rss files as XML
+    autocmd BufNewFile,BufRead *.rss setfiletype xml
+endif
+
+" When pasting text, Vim tries to follow indenting/alingment rules.
+" To paste a chunk of text without having it be smart, hit f2 before
+" and after.
+set pastetoggle=<F2>
+
+" Ignore a bunch of typical stuff I never want to see in an editor
+set wildignore=*.swp,*.bak,*.pyc,*.class
+
 " NERDTree shortcut
 map <leader>nt :NERDTreeToggle<CR>
+let NERDTreeIgnore=['\.vim$', '.swp$', '.pyc$', '.bak$', '.class$', '.d$[[dir]]', '.o$[[file]]']
 
+" Make Powerline look great
+set laststatus=2 " always display the status line
+" hide the usual fill characters
+set fillchars+=stl:\ ,stlnc:\
+" Set the terminal font using the ssh tool or whatever, but
+" if you're in the gui version of vim, use the patched font.
+set guifont=Source\ Code\ Pro\ for\ Powerline:h11
+" let it go crazy with awesome glyphs
+let g:Powerline_symbols="fancy"
+
+augroup vimrc_autocmds
+    autocmd!
+    " Highlight characters longer than 80 chars in Python
+    autocmd FileType python highlight Excess ctermbg=DarkGrey guibg=Black
+    autocmd FileType python match Excess /\%80v.*/
+    autocmd FileType python set nowrap
+augroup END
+
+" Python-mode
+" Activate rope
+" Keys:
+" K             Show python docs
+" <Ctrl-Space>  Rope autocomplete
+" <Ctrl-c>g     Rope goto definition
+" <Ctrl-c>d     Rope show documentation
+" <Ctrl-c>f     Rope find occurrences
+" <Leader>b     Set, unset breakpoint (g:pymode_breakpoint enabled)
+" [[            Jump on previous class or function (normal, visual, operator modes)
+" ]]            Jump on next class or function (normal, visual, operator modes)
+" [M            Jump on previous class or method (normal, visual, operator modes)
+" ]M            Jump on next class or method (normal, visual, operator modes)
+let g:pymode_rope = 0
+
+" Documentation
+let g:pymode_doc = 1
+let g:pymode_doc_key = 'K'
+
+"Linting
+let g:pymode_lint = 0
+let g:pymode_lint_checker = "pyflakes,pep8"
+" Auto check on save
+let g:pymode_lint_write = 1
+
+" Support virtualenv
+let g:pymode_virtualenv = 1
+
+" Enable breakpoints plugin
+let g:pymode_breakpoint = 1
+let g:pymode_breakpoint_key = '<leader>b'
+
+" syntax highlighting
+let g:pymode_syntax = 1
+let g:pymode_syntax_all = 1
+let g:pymode_syntax_indent_errors = g:pymode_syntax_all
+let g:pymode_syntax_space_errors = g:pymode_syntax_all
+
+" Don't autofold code
+let g:pymode_folding = 0
+
+" Syntastic settings
+let g:syntastic_check_on_open=2
+let g:syntastic_enable_signs=1
+let g:syntastic_auto_jump=1
+let g:syntastic_auto_loc_list=1
+let g:syntastic_always_populate_loc_list=1
+let g:syntastic_stl_format = '[%E{Err: %fe #%e}%B{, }%W{Warn: %fw #%w}]'
+let g:syntastic_loc_list_height=5

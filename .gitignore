@@ -1,3 +1,6 @@
 *.swp
 *.un~
 DS_Store
+.ropeproject/
+node_modules/**
+
