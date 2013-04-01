@@ -13,7 +13,9 @@ Bundle 'kien/ctrlp.vim'
 Bundle 'scrooloose/nerdtree'
 Bundle 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
 Bundle 'klen/python-mode'
+" Ultisnips required Python to be built in
 Bundle 'SirVer/ultisnips'
+Bundle 'tpope/vim-fugitive'
 " Requires a javascript interpreter
 " which is already on Mac OSX, and can be installed
 " on Linux using `sudo apt-get install spidermonkey-bin`

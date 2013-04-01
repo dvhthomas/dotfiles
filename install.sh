@@ -18,6 +18,8 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
     cd ~/dotfiles
     git clone https://github.com/Lokaltog/powerline-fonts
     cd $OLDPWD
+    # node on osx already include npm
+    brew install nodejs
 else
     echo "Linux"
     # nodejs stuff for jshint vim plugin
@@ -25,8 +27,10 @@ else
     sudo apt-get update
     sudo apt-get install nodejs
     curl https://npmjs.org/install.sh | sudo sh
-    sudo npm install -g jshint
 fi
+
+# jshint plugin
+sudo npm install -g jshint
 
 # Managing all bundles with vundle...
 git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
