@@ -19,7 +19,7 @@ Bundle 'tpope/vim-fugitive'
 " Requires a javascript interpreter
 " which is already on Mac OSX, and can be installed
 " on Linux using `sudo apt-get install spidermonkey-bin`
-Bundle 'wookiehangover/jshint.vim'
+" Bundle 'wookiehangover/jshint.vim'
 " Multi-language syntax checking. Make sure you install
 " language specific plugins, e.g., pip install flake8
 Bundle 'scrooloose/syntastic'
@@ -118,7 +118,7 @@ let g:pymode_doc_key = 'K'
 let g:pymode_lint = 0
 let g:pymode_lint_checker = "pyflakes,pep8"
 " Auto check on save
-let g:pymode_lint_write = 1
+" let g:pymode_lint_write = 1
 
 " Support virtualenv
 let g:pymode_virtualenv = 1
@@ -137,10 +137,11 @@ let g:pymode_syntax_space_errors = g:pymode_syntax_all
 let g:pymode_folding = 0
 
 " Syntastic settings
-let g:syntastic_check_on_open=2
+let g:syntastic_check_on_open=1
 let g:syntastic_enable_signs=1
 let g:syntastic_auto_jump=1
 let g:syntastic_auto_loc_list=1
 let g:syntastic_always_populate_loc_list=1
 let g:syntastic_stl_format = '[%E{Err: %fe #%e}%B{, }%W{Warn: %fw #%w}]'
 let g:syntastic_loc_list_height=5
+let g:syntastic_javascript_checkers=['jshint']

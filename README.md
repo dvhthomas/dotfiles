@@ -11,5 +11,4 @@ This is where I keep my handy dandy configs for various tools on Mac OS and Linu
 
 1. `cd ~/`
 1. `git clone https://github.com/dvhthomas/dotfiles`
-1. `chmod +x dotfiles/install.sh`
 1. `dotfiles/install.sh`
