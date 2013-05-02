@@ -1,3 +1,4 @@
+#!/bin/sh
 # Assumes that you've clone the dotfiles repo into $HOME/dotfiles
 rm ~/.vimrc
 ln -s ~/dotfiles/vim/vimrc ~/.vimrc
@@ -11,7 +12,7 @@ rm ~/.tmux-osx.conf
 ln -s ~/dotfiles/tmux-osx.conf ~/.tmux-osx.conf
 
 # HomeBrew on the Mac to install
-if [[ "$OSTYPE" == "darwin"* ]]; then
+if [ "$(OS|MACH)TYPE" = "darwin"* ]; then
     # handle tmux clipboard nicely
     brew install reattach-to-user-namespace
     # get patched fonts for powerline
