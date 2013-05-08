@@ -16,6 +16,7 @@ Bundle 'klen/python-mode'
 " Ultisnips required Python to be built in
 Bundle 'SirVer/ultisnips'
 Bundle 'tpope/vim-fugitive'
+Bundle 'vim-scripts/ZenCoding.vim.git'
 " Requires a javascript interpreter
 " which is already on Mac OSX, and can be installed
 " on Linux using `sudo apt-get install spidermonkey-bin`
@@ -23,6 +24,7 @@ Bundle 'tpope/vim-fugitive'
 " Multi-language syntax checking. Make sure you install
 " language specific plugins, e.g., pip install flake8
 Bundle 'scrooloose/syntastic'
+Bundle 'tpope/vim-git'
 filetype plugin indent on " required for Bundle to work
 
 " Use spaces instead of tabs
@@ -60,6 +62,7 @@ if has("autocmd")
 
     " Customisations based on house-style (arbitrary)
     autocmd FileType html setlocal ts=2 sts=2 sw=2 expandtab
+    autocmd FileType javascript setlocal ts=2 sts=2 sw=2 expandtab
     autocmd FileType css setlocal ts=2 sts=2 sw=2 expandtab
     " Treat .rss files as XML
     autocmd BufNewFile,BufRead *.rss setfiletype xml
@@ -146,3 +149,8 @@ let g:syntastic_always_populate_loc_list=1
 let g:syntastic_stl_format = '[%E{Err: %fe #%e}%B{, }%W{Warn: %fw #%w}]'
 let g:syntastic_loc_list_height=5
 let g:syntastic_javascript_checkers=['jshint']
+
+" Zen Coding settings
+" I like Ctrl-e as a trigger
+let g:user_zen_expandabbr_key = '<c-e>'
+
