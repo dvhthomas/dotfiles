@@ -41,7 +41,6 @@ set t_Co=256  " make use of 256 terminal colors
 "color summerfruit256
 color Tomorrow
 let mapleader=","
-let g:ctrlp_user_command = "find %s -type f | egrep -v '/\.(git|hg|svn|pythonbrew)|solr|tmp/' | egrep -v '\.(png|exe|jpg|gif|jar|class|swp|swo|log|gitkep|keepme|so|o|pyc|zip|swp|un~)$'"
 
 " ,r will reload the ~/.vimrc file
 map <leader>r :so $MYVIMRC<CR>
@@ -68,10 +67,14 @@ if has("autocmd")
     autocmd BufNewFile,BufRead *.rss setfiletype xml
 endif
 
-" When pasting text, Vim tries to follow indenting/alignment rules.
-" To paste a chunk of text without having it be smart, hit f2 before
-" and after.
-set pastetoggle=<F2>
+
+" CtrlP should ignore stuff I cannot edit
+let g:ctrlp_user_command = "find %s -type f | egrep -v '/\.(git|hg|svn|pythonbrew)|solr|tmp/' | egrep -v '\.(png|exe|jpg|gif|jar|class|swp|swo|log|gitkep|keepme|so|o|pyc|zip|swp|un~)$'"
+" CtrlP has a handy CtrlPBuffer command to list open buffers. Make it easy
+map <leader>b :CtrlPBuffer<CR>
+
+" CtrlP has a handy CtrlPBuffer command to list open buffers. Make it easy
+map <leader>mr :CtrlPMRU<CR>
 
 
 " Ignore a bunch of typical stuff I never want to see in an editor
