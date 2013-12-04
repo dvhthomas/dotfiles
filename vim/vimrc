@@ -11,7 +11,8 @@ Bundle 'davidhalter/jedi-vim'
 Bundle 'tpope/vim-sensible'
 Bundle 'kien/ctrlp.vim'
 Bundle 'scrooloose/nerdtree'
-Bundle 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
+" Bundle 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
+Bundle 'bling/vim-airline'
 Bundle 'klen/python-mode'
 " Ultisnips required Python to be built in
 Bundle 'SirVer/ultisnips'
@@ -75,6 +76,8 @@ map <leader>b :CtrlPBuffer<CR>
 
 " CtrlP has a handy CtrlPBuffer command to list open buffers. Make it easy
 map <leader>mr :CtrlPMRU<CR>
+
+map <leader>pc :CtrlPClearCache<CR>
 
 
 " Ignore a bunch of typical stuff I never want to see in an editor
