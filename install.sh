@@ -12,17 +12,18 @@ rm ~/.tmux-osx.conf
 ln -s ~/dotfiles/tmux-osx.conf ~/.tmux-osx.conf
 
 # HomeBrew on the Mac to install
-if [ "$(OS|MACH)TYPE" = "darwin"* ]; then
+if [[ $OSTYPE == "darwin"* ]]; then
     # handle tmux clipboard nicely
     brew install reattach-to-user-namespace
     # get patched fonts for powerline
     cd ~/dotfiles
+    mkdir -p ~/bin
+    rm ~/bin/safe-reattach-to-user-namespace
+    ln -s ~/dotfiles/safe-reattach-to-user-namespace ~/bin/safe-reattach-to-user-namespace
     git clone https://github.com/Lokaltog/powerline-fonts
     cd $OLDPWD
-    # node on osx already include npm
 else
     echo "Linux"
-    # nodejs stuff for jshint vim plugin
     sudo apt-get install python-software-properties python g++ make
     sudo apt-get update
 fi
@@ -31,7 +32,7 @@ fi
 # Managing all bundles with vundle...
 git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
 # Put any prerequisites for bundles
-# Jedi code completion plugin for vim needs this
+
 
 # Install the bundles
 vim +BundleInstall +qall
