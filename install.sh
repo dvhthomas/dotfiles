@@ -20,30 +20,18 @@ if [ "$(OS|MACH)TYPE" = "darwin"* ]; then
     git clone https://github.com/Lokaltog/powerline-fonts
     cd $OLDPWD
     # node on osx already include npm
-    brew install nodejs
 else
     echo "Linux"
     # nodejs stuff for jshint vim plugin
     sudo apt-get install python-software-properties python g++ make
     sudo apt-get update
-    sudo apt-get install nodejs
-    curl https://npmjs.org/install.sh | sudo sh
 fi
 
-# jshint plugin
-sudo npm install -g jshint
 
 # Managing all bundles with vundle...
 git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
 # Put any prerequisites for bundles
 # Jedi code completion plugin for vim needs this
-# python library
-pip install jedi
 
 # Install the bundles
 vim +BundleInstall +qall
-
-cd ~/dotfiles
-#git submodule update --init --recursive
-#git submodule update --recursive
-cd ~

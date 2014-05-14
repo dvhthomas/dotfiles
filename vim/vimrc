@@ -24,7 +24,7 @@ Bundle 'vim-scripts/ZenCoding.vim.git'
 " Bundle 'wookiehangover/jshint.vim'
 " Multi-language syntax checking. Make sure you install
 " language specific plugins, e.g., pip install flake8
-Bundle 'scrooloose/syntastic'
+" Bundle 'scrooloose/syntastic'
 Bundle 'tpope/vim-git'
 filetype plugin indent on " required for Bundle to work
 
