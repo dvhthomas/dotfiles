@@ -1,6 +1,2 @@
-*.swp
-*.un~
-DS_Store
-.ropeproject/
-node_modules/**
-vim/bundle/.vundle/
+vim/bundles/**
+.DS_Store
