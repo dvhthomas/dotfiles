@@ -89,13 +89,12 @@ map <leader>mr :CtrlPMRU<CR>
 
 map <leader>pc :CtrlPClearCache<CR>
 
-
 " Ignore a bunch of typical stuff I never want to see in an editor
 set wildignore=*.swp,*.bak,*.pyc,*.class
 
 " NERDTree shortcut
 map <leader>nt :NERDTreeToggle<CR>
-let NERDTreeIgnore=['\.vim$', '.swp$', '.pyc$', '.bak$', '.class$', '.d$[[dir]]', '.o$[[file]]']
+let NERDTreeIgnore=['\.vim$', '.swp$', '.pyc$', '.bak$', '.d$[[dir]]', '.o$[[file]]']
 
 " Make Powerline look great
 set laststatus=2 " always display the status line
