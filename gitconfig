@@ -5,3 +5,5 @@
 	ui = true
 [core]
 	pager = less
+[http]
+	cookiefile = /Users/dylanthomas/.gitcookies
