@@ -4,7 +4,7 @@ dotfiles
 This is where I keep my handy dandy configs for various tools on Mac OS and Linux. Requires installing the tools first using `brew` (Homebrew on Mac) or `apt-get`.
 
 * tmux
-* vim (MacVim)
+* vim (MacVim): `brew install macvim --with-cscope --with-lua --override-system-vim --with-luajit --with-python3`
 * git
 
 ## Instructions

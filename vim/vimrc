@@ -10,24 +10,19 @@ set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 " Original repos on github
 Bundle 'gmarik/vundle'
+Bundle 'Shougo/unite.vim'
+Bundle 'Shougo/vimfiler.vim'
+Bundle 'rking/ag.vim'
 Bundle 'davidhalter/jedi-vim'
 Bundle 'tpope/vim-sensible'
 Bundle 'kien/ctrlp.vim'
-Bundle 'scrooloose/nerdtree'
-" Bundle 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
+" Bundle 'scrooloose/nerdtree'
 " Bundle 'bling/vim-airline'
 Bundle 'klen/python-mode'
 " Ultisnips required Python to be built in
 Bundle 'SirVer/ultisnips'
 Bundle 'tpope/vim-fugitive'
 Bundle 'vim-scripts/ZenCoding.vim.git'
-" Requires a javascript interpreter
-" which is already on Mac OSX, and can be installed
-" on Linux using `sudo apt-get install spidermonkey-bin`
-" Bundle 'wookiehangover/jshint.vim'
-" Multi-language syntax checking. Make sure you install
-" language specific plugins, e.g., pip install flake8
-" Bundle 'scrooloose/syntastic'
 Bundle 'tpope/vim-git'
 filetype plugin indent on " required for Bundle to work
 
@@ -74,6 +69,8 @@ endif
 
 " Spell-check Markdown files
 autocmd FileType markdown setlocal spell
+" And make the highlighted text readable
+hi SpellBad ctermfg=000 guifg=#000
 
 " Spell-check Git messages
 autocmd FileType gitcommit setlocal spell
@@ -92,8 +89,11 @@ map <leader>pc :CtrlPClearCache<CR>
 " Ignore a bunch of typical stuff I never want to see in an editor
 set wildignore=*.swp,*.bak,*.pyc,*.class
 
+let g:vimfiler_as_default_explorer = 1
+map <leader>f :VimFilerExplorer -parent -find<CR>
+
 " NERDTree shortcut
-map <leader>nt :NERDTreeToggle<CR>
+" map <leader>nt :NERDTreeToggle<CR>
 let NERDTreeIgnore=['\.vim$', '.swp$', '.pyc$', '.bak$', '.d$[[dir]]', '.o$[[file]]']
 
 " Make Powerline look great
