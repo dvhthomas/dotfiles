@@ -20,7 +20,6 @@ if [[ $OSTYPE == "darwin"* ]]; then
     mkdir -p ~/bin
     rm ~/bin/safe-reattach-to-user-namespace
     ln -s ~/dotfiles/safe-reattach-to-user-namespace ~/bin/safe-reattach-to-user-namespace
-    git clone https://github.com/Lokaltog/powerline-fonts
     cd $OLDPWD
 else
     echo "Linux"
@@ -28,6 +27,7 @@ else
     sudo apt-get update
 fi
 
+git clone https://github.com/Lokaltog/powerline-fonts
 
 # Managing all bundles with vundle...
 git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
@@ -35,4 +35,5 @@ git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
 
 
 # Install the bundles
-vim +BundleInstall +qall
+vim +BundleInstall +VimProcInstall +qall
+

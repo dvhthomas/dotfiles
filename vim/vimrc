@@ -11,15 +11,15 @@ call vundle#rc()
 " Original repos on github
 Bundle 'gmarik/vundle'
 Bundle 'Shougo/unite.vim'
+Bundle 'Shougo/vimproc.vim'
+Bundle 'Shougo/neomru.vim'
+Bundle 'Shougo/neoyank.vim'
 Bundle 'Shougo/vimfiler.vim'
 Bundle 'rking/ag.vim'
 Bundle 'davidhalter/jedi-vim'
 Bundle 'tpope/vim-sensible'
-Bundle 'kien/ctrlp.vim'
-" Bundle 'scrooloose/nerdtree'
 " Bundle 'bling/vim-airline'
 Bundle 'klen/python-mode'
-" Ultisnips required Python to be built in
 Bundle 'SirVer/ultisnips'
 Bundle 'tpope/vim-fugitive'
 Bundle 'vim-scripts/ZenCoding.vim.git'
@@ -42,8 +42,8 @@ set t_Co=256  " make use of 256 terminal colors
 color Tomorrow-Night
 let mapleader=","
 
-" ,r will reload the ~/.vimrc file
-map <leader>r :so $MYVIMRC<CR>
+" ,x will reload the ~/.vimrc file
+map <leader>x :so $MYVIMRC<CR>
 
 " show whitespace
 set listchars=tab:→.,trail:.,extends:#,nbsp:.,precedes:<
@@ -75,26 +75,44 @@ hi SpellBad ctermfg=000 guifg=#000
 " Spell-check Git messages
 autocmd FileType gitcommit setlocal spell
 
+" Unite settings
+" call unite#filters#matcher_default#use(['matcher_fuzzy'])
+" Hide stuff we don't care about from the file search
+call unite#custom_source('file_rec/async', 'ignore_pattern', '.repo')
+let g:unite_source_file_rec_max_cache_files = 0
+call unite#custom#source('file_mru,file_rec,file_rec/async,grepocate', 'max_candidates', 0)
 
-" CtrlP should ignore stuff I cannot edit
-let g:ctrlp_user_command = "find %s -type f | egrep -v '/\.(git|hg|svn|pythonbrew)|solr|tmp/' | egrep -v '\.(png|exe|jpg|gif|jar|class|swp|swo|log|gitkep|keepme|so|o|pyc|zip|swp|un~)$'"
-" CtrlP has a handy CtrlPBuffer command to list open buffers. Make it easy
-map <leader>b :CtrlPBuffer<CR>
+" Custom mappings for the unite buffer
+autocmd FileType unite call s:unite_settings()
+function! s:unite_settings()
+  " Enable navigation with control-j and control-k in insert mode
+  imap <buffer> <C-j>   <Plug>(unite_select_next_line)
+  imap <buffer> <C-k>   <Plug>(unite_select_previous_line)
+endfunction
 
-" CtrlP has a handy CtrlPBuffer command to list open buffers. Make it easy
-map <leader>mr :CtrlPMRU<CR>
+" Find files recursively in the current directory
+nnoremap <silent> <leader>l :<C-u>Unite -no-split -start-insert file_rec/async<CR>
 
-map <leader>pc :CtrlPClearCache<CR>
+" Open an in-place list of open buffers
+nnoremap <silent> <leader>b :Unite -no-split buffer file_mru<CR>
+
+" Open an in-place list of the most recently used files
+nnoremap <silent> <leader>m :Unite -no-split file_mru<CR>
+
+" Open an in-place list of the yanked buffers
+nnoremap <silent> <leader>y :Unite -no-split history/yank<CR>
+
+" VimFiler for file navigation
+let g:vimfiler_as_default_explorer = 1
+let g:vimfiler_ignore_pattern = ['^\.git$', '^\.repo$', '^\.DS_Store$', '^.+?\.sw.?$']
+map <leader>f :VimFilerExplorer -parent -find<CR>
+let g:vimfiler_tree_leaf_icon = ' '
+let g:vimfiler_tree_opened_icon = '▾'
+let g:vimfiler_tree_closed_icon = '▸'
+let g:vimfiler_file_icon = '-'
 
 " Ignore a bunch of typical stuff I never want to see in an editor
 set wildignore=*.swp,*.bak,*.pyc,*.class
-
-let g:vimfiler_as_default_explorer = 1
-map <leader>f :VimFilerExplorer -parent -find<CR>
-
-" NERDTree shortcut
-" map <leader>nt :NERDTreeToggle<CR>
-let NERDTreeIgnore=['\.vim$', '.swp$', '.pyc$', '.bak$', '.d$[[dir]]', '.o$[[file]]']
 
 " Make Powerline look great
 set laststatus=2 " always display the status line
@@ -144,7 +162,6 @@ let g:pymode_virtualenv = 1
 
 " Enable breakpoints plugin
 let g:pymode_breakpoint = 0
-let g:pymode_breakpoint_key = '<leader>b'
 
 " syntax highlighting
 let g:pymode_syntax = 1
