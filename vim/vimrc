@@ -18,7 +18,7 @@ Bundle 'Shougo/vimfiler.vim'
 Bundle 'rking/ag.vim'
 Bundle 'davidhalter/jedi-vim'
 Bundle 'tpope/vim-sensible'
-" Bundle 'bling/vim-airline'
+Bundle 'ctrlpvim/ctrlp.vim'
 Bundle 'klen/python-mode'
 Bundle 'SirVer/ultisnips'
 Bundle 'tpope/vim-fugitive'
@@ -38,8 +38,8 @@ set number
 set hidden
 set t_Co=256  " make use of 256 terminal colors
 "color summerfruit256
-"color Tomorrow
-color Tomorrow-Night
+color Tomorrow
+"color Tomorrow-Night
 let mapleader=","
 
 " ,x will reload the ~/.vimrc file
