@@ -39,7 +39,8 @@ set hidden
 set t_Co=256  " make use of 256 terminal colors
 "color summerfruit256
 "color Tomorrow
-color Tomorrow-Night
+"color Tomorrow-Night
+color darcula
 let mapleader=","
 
 " ,x will reload the ~/.vimrc file
@@ -81,6 +82,15 @@ autocmd FileType gitcommit setlocal spell
 call unite#custom_source('file_rec/async', 'ignore_pattern', '.repo')
 let g:unite_source_file_rec_max_cache_files = 0
 call unite#custom#source('file_mru,file_rec,file_rec/async,grepocate', 'max_candidates', 0)
+if executable('ag')
+    let g:unite_source_grep_command = 'ag'
+    let g:unite_source_grep_default_opts =
+        \ '--smart-case --line-numbers --nocolor --nogroup'
+    let g:unite_source_grep_recursive_opt = ''
+    let g:unite_source_rec_async_command =
+        \ ['ag', '--smart-case', '--follow', '--nocolor', '--nogroup',
+        \  '--hidden', '-g', '']
+endif
 
 " Custom mappings for the unite buffer
 autocmd FileType unite call s:unite_settings()
@@ -101,6 +111,10 @@ nnoremap <silent> <leader>m :Unite -no-split file_mru<CR>
 
 " Open an in-place list of the yanked buffers
 nnoremap <silent> <leader>y :Unite -no-split history/yank<CR>
+
+" Open an in-place list of search results in current file
+nnoremap <silent> <leader>g :Unite -no-split vimgrep:%<CR>
+
 
 " VimFiler for file navigation
 let g:vimfiler_as_default_explorer = 1
@@ -146,6 +160,7 @@ augroup END
 " [M            Jump on previous class or method (normal, visual, operator modes)
 " ]M            Jump on next class or method (normal, visual, operator modes)
 let g:pymode_rope = 0
+let g:pymode_rope_goto_definition_bind = "<leader>]"
 
 " Documentation
 let g:pymode_doc = 1
