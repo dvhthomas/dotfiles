@@ -35,5 +35,6 @@ git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
 
 
 # Install the bundles
-vim +BundleInstall +VimProcInstall +qall
+vim +BundleInstall  +qall
+vim +VimProcInstall +qall
 
