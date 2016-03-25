@@ -6,4 +6,4 @@
 [core]
 	pager = less
 [http]
-	cookiefile = /Users/dylanthomas/.gitcookies
+	cookiefile = /usr/local/google/home/dylanthomas/.gitcookies
