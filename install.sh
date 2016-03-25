@@ -37,3 +37,7 @@ git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
 # Install the bundles
 vim +BundleInstall +VimProcInstall +qall
 
+# Install tmux plugin manager
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+tmux source ~/.tmux.conf
+
