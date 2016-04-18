@@ -38,7 +38,8 @@ set number
 set hidden
 set t_Co=256  " make use of 256 terminal colors
 "color summerfruit256
-color Tomorrow
+"color Tomorrow
+color darcula
 "color Tomorrow-Night
 let mapleader=","
 
