@@ -32,6 +32,8 @@ set shiftwidth=4
 set softtabstop=4
 set expandtab
 syntax enable
+" Enable copy to clipboard
+set clipboard=unnamed
 " Turn on line numbers
 set number
 " allow switching from an unsaved buffer without first having to save it
@@ -39,7 +41,9 @@ set hidden
 set t_Co=256  " make use of 256 terminal colors
 "color summerfruit256
 "color Tomorrow
-color darcula
+"color darcula
+set background=dark
+colorscheme PaperColor
 "color Tomorrow-Night
 let mapleader=","
 
