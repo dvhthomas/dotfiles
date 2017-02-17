@@ -1,5 +1,10 @@
 #!/bin/sh
 # Assumes that you've clone the dotfiles repo into $HOME/dotfiles
+# and that python is already installed:
+#       $ brew install python
+#       $ pip install --upgrade pip
+#       $ brew install --upgrade setuptools
+
 rm ~/.vimrc
 ln -s ~/dotfiles/vim/vimrc ~/.vimrc
 rm -rf ~/.vim
@@ -14,7 +19,7 @@ ln -s ~/dotfiles/tmux-osx.conf ~/.tmux-osx.conf
 # HomeBrew on the Mac to install
 if [[ $OSTYPE == "darwin"* ]]; then
     # handle tmux clipboard nicely
-    brew install reattach-to-user-namespace
+    brew install reattach-to-user-namespace --with-wrap-pbcopy-and-pbpaste
     # get patched fonts for powerline
     cd ~/dotfiles
     mkdir -p ~/bin

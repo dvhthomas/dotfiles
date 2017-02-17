@@ -16,11 +16,8 @@ Bundle 'Shougo/neomru.vim'
 Bundle 'Shougo/neoyank.vim'
 Bundle 'Shougo/vimfiler.vim'
 Bundle 'rking/ag.vim'
-Bundle 'davidhalter/jedi-vim'
 Bundle 'tpope/vim-sensible'
-Bundle 'ctrlpvim/ctrlp.vim'
 Bundle 'klen/python-mode'
-Bundle 'SirVer/ultisnips'
 Bundle 'tpope/vim-fugitive'
 Bundle 'vim-scripts/ZenCoding.vim.git'
 Bundle 'tpope/vim-git'
@@ -75,7 +72,7 @@ endif
 " Spell-check Markdown files
 autocmd FileType markdown setlocal spell
 " And make the highlighted text readable
-hi SpellBad ctermfg=000 guifg=#000
+hi SpellBad ctermfg=000
 
 " Spell-check Git messages
 autocmd FileType gitcommit setlocal spell
