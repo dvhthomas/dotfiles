@@ -4,6 +4,7 @@
 #       $ brew install python
 #       $ pip install --upgrade pip
 #       $ brew install --upgrade setuptools
+#       $ pip install --user powerline-status
 
 rm ~/.vimrc
 ln -s ~/dotfiles/vim/vimrc ~/.vimrc
