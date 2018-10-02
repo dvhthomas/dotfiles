@@ -1,9 +1,8 @@
 [user]
-	name = Dylan Thomas
-	email = dylanthomas@google.com
+    name = Dylan Thomas
+    email = dvhthomas@gmail.com
 [color]
-	ui = true
+    ui = true
 [core]
-	pager = less
-[http]
-	cookiefile = /usr/local/google/home/dylanthomas/.gitcookies
+    pager = less
+

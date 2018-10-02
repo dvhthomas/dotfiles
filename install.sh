@@ -1,44 +1,35 @@
 #!/bin/sh
 # Assumes that you've clone the dotfiles repo into $HOME/dotfiles
-rm ~/.vimrc
-ln -s ~/dotfiles/vim/vimrc ~/.vimrc
-rm -rf ~/.vim
-ln -s ~/dotfiles/vim ~/.vim
-rm ~/.gitconfig
-ln -s ~/dotfiles/gitconfig ~/.gitconfig
-rm ~/.tmux.conf
-ln -s ~/dotfiles/tmux.conf ~/.tmux.conf
-rm ~/.tmux-osx.conf
-ln -s ~/dotfiles/tmux-osx.conf ~/.tmux-osx.conf
-
-# HomeBrew on the Mac to install
-if [[ $OSTYPE == "darwin"* ]]; then
-    # handle tmux clipboard nicely
-    brew install reattach-to-user-namespace
-    # get patched fonts for powerline
-    cd ~/dotfiles
-    mkdir -p ~/bin
-    rm ~/bin/safe-reattach-to-user-namespace
-    ln -s ~/dotfiles/safe-reattach-to-user-namespace ~/bin/safe-reattach-to-user-namespace
-    cd $OLDPWD
+# using: cd ; git clone http://github.com/dvhthomas/dotfiles
+if [ -f $HOME/.config/nvim/init.vim ]; then
+    rm $HOME/.config/nvim/init.vim
 else
-    echo "Linux"
-    sudo apt-get install python-software-properties python g++ make
-    sudo apt-get update
+	mkdir -p $HOME/.config/nvim
 fi
+
+ln -s $HOME/dotfiles/nvim/init.vim ~/.config/nvim/init.vim
+
+if [ -f $HOME/.gitconfig ]; then
+    rm ~/.gitconfig
+fi
+
+ln -s ~/dotfiles/gitconfig ~/.gitconfig
+
+rm $HOME/.tmux.conf
+ln -s $HOME/dotfiles/tmux.conf ~/.tmux.conf
 
 git clone https://github.com/Lokaltog/powerline-fonts
 
-# Managing all bundles with vundle...
-git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
-# Put any prerequisites for bundles
+# HomeBrew on the Mac to install
+if [[ $OSTYPE == "darwin"* ]]; then
+    echo "Mac OS"
+else
+    echo "Linux"
+    #sudo apt-get install python-software-properties python g++ make
+    #sudo apt-get update
+fi
 
 
-# Install the bundles
-vim +BundleInstall  +qall
-vim +VimProcInstall +qall
-
-# Install tmux plugin manager
-git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-tmux source ~/.tmux.conf
+# Manage all NeoVim plugins with vim-plug
+curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
