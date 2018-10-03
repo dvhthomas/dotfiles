@@ -1,11 +1,14 @@
 #!/bin/sh
 # Assumes that you've clone the dotfiles repo into $HOME/dotfiles
-<<<<<<< HEAD
 # using: cd ; git clone http://github.com/dvhthomas/dotfiles
+# Assumes you've got golang, nodejs, Python3 on path.
+
+# Point to the right files
+
 if [ -f $HOME/.config/nvim/init.vim ]; then
     rm $HOME/.config/nvim/init.vim
 else
-	mkdir -p $HOME/.config/nvim
+    mkdir -p $HOME/.config/nvim
 fi
 
 ln -s $HOME/dotfiles/nvim/init.vim ~/.config/nvim/init.vim
@@ -16,50 +19,42 @@ fi
 
 ln -s ~/dotfiles/gitconfig ~/.gitconfig
 
-rm $HOME/.tmux.conf
-ln -s $HOME/dotfiles/tmux.conf ~/.tmux.conf
 
 git clone https://github.com/Lokaltog/powerline-fonts
 
-# HomeBrew on the Mac to install
+# Do any OS-specific bits
 if [[ $OSTYPE == "darwin"* ]]; then
-    echo "Mac OS"
-=======
-# and that python is already installed:
-#       $ brew install python
-#       $ pip install --upgrade pip
-#       $ brew install --upgrade setuptools
-#       $ pip install --user powerline-status
-
-rm ~/.vimrc
-ln -s ~/dotfiles/vim/vimrc ~/.vimrc
-rm -rf ~/.vim
-ln -s ~/dotfiles/vim ~/.vim
-#rm ~/.gitconfig
-#ln -s ~/dotfiles/gitconfig ~/.gitconfig
-rm ~/.tmux.conf
-ln -s ~/dotfiles/tmux.conf ~/.tmux.conf
-rm ~/.tmux-osx.conf
-ln -s ~/dotfiles/tmux-osx.conf ~/.tmux-osx.conf
-
-# HomeBrew on the Mac to install
-if [[ $OSTYPE == "darwin"* ]]; then
-    # handle tmux clipboard nicely
-    brew install reattach-to-user-namespace --with-wrap-pbcopy-and-pbpaste
-    # get patched fonts for powerline
-    cd ~/dotfiles
-    mkdir -p ~/bin
-    rm ~/bin/safe-reattach-to-user-namespace
-    ln -s ~/dotfiles/safe-reattach-to-user-namespace ~/bin/safe-reattach-to-user-namespace
-    cd $OLDPWD
->>>>>>> df6a764333ec3f3b0c5ea31392be8f3c5a082e4d
+    echo "Setting up Mac OS"
+    brew update
+    brew install htop
+    # Official fork of exhuberant-ctags
+    brew install --HEAD universal-ctags/universal-ctags/universal-ctags
+    brew install wget
+    brew install the_silver_searcher
 else
     echo "Linux"
-    #sudo apt-get install python-software-properties python g++ make
-    #sudo apt-get update
 fi
 
 
+# Get Python ready
+pip3 install --upgrade pip
+
+# Install Go dependencies
+go get -u github.com/mdempsky/gocode
+
+# Node it!
+npm install -g neovim
+
 # Manage all NeoVim plugins with vim-plug
 curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+pip3 install neovim
+nvim +PlugInstall +qa
+nvim +UpdateRemotePlugins +qa
 
+# TMUX
+
+rm $HOME/.tmux.conf
+ln -s $HOME/dotfiles/tmux.conf ~/.tmux.conf
+
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+~/.tmux/plugins/tpm/bin/install_plugins

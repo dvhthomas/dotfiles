@@ -4,7 +4,6 @@
 # fi
 
 export PS1='\$ '
-<<<<<<< HEAD
 
 # Assumes NeoVim is already on the PATH
 alias vim='nvim'
@@ -12,8 +11,20 @@ export EDITOR=nvim
 export GOPATH=$HOME/go
 export PATH=${GOPATH}/bin:${PATH}
 
-=======
-set -o vi
-alias tmux="TERM=screen-256color-bce tmux"
-export EDITOR=vi
->>>>>>> df6a764333ec3f3b0c5ea31392be8f3c5a082e4d
+# Set CLICOLOR if you want Ansi Colors in iTerm2 
+export CLICOLOR=1
+
+# Set colors to match iTerm2 Terminal Colors
+export TERM=xterm-256color
+
+
+# Little helpers
+alias ll="ls -lA"
+
+if [[ $OSTYPE == "darwin"* ]]; then
+	alias ctags="`brew --prefix`/bin/ctags"
+fi
+
+# Tell fzf that it should use ag instead.
+export FZF_DEFAULT_COMMAND='ag --ignore *.pyc -g ""'
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"

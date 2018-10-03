@@ -7,6 +7,11 @@ This is where I keep my handy dandy configs for various tools on Mac OS and Linu
 * nvim (NeoVim)
 * git
 
+## Prerequisites
+
+* Python3. `deoplete.vim` needs it for auto-complete.
+* `pip3`.
+
 ## Instructions
 
 1. `cd ~/`

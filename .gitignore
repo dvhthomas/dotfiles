@@ -1,5 +1,5 @@
-vim/bundle/**
-vim/spell/**
+tags
+vim/**
 powerline-fonts/**
 .DS_Store
 gitconfig
