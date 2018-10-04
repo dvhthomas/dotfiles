@@ -28,3 +28,8 @@ fi
 # Tell fzf that it should use ag instead.
 export FZF_DEFAULT_COMMAND='ag --ignore *.pyc -g ""'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+
+# Let's make `man` pages easier to read
+if command -v most > /dev/null 2>&1; then
+    export PAGER="most"
+fi

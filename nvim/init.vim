@@ -2,6 +2,7 @@ call plug#begin('~/.local/share/nvim/plugged')
 
 " Dependencies
 Plug 'Shougo/neocomplcache'         " Depenency for Shougo/neosnippet
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }       " Autocomplete
 
 " General plugins
 Plug 'w0rp/ale'                     " Async Lint Engine; add language support below
@@ -10,6 +11,9 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }   " Fuzzy file
 Plug 'junegunn/fzf.vim'                                " Fuzzy finder in Vim
 Plug 'scrooloose/nerdtree'          " File explorer
 Plug 'mileszs/ack.vim'              " Search in files
+Plug 'Shougo/neosnippet.vim'      " Snippet manager
+Plug 'Shougo/neosnippet-snippets' " Boatload of snippets for many languages
+Plug 'honza/vim-snippets'           " And even more snippets
 
 " Language support
 
@@ -21,6 +25,7 @@ Plug 'cespare/vim-toml'                        " toml syntax highlighting
 Plug 'leafgarland/typescript-vim'              " TypeScript syntax highlighting
 Plug 'lifepillar/pgsql.vim'                    " PostgreSQL syntax highlighting
 Plug 'skammer/vim-css-color'                    " Not really language per se but colors swatches inline
+Plug 'vim-scripts/YankRing.vim'                 " Manage the clipboard
 
 " Colorschemes
 Plug 'morhetz/gruvbox'
@@ -92,6 +97,31 @@ map <leader>c :nohlsearch<cr>
 " center on the line it's found in.
 nnoremap n nzzzv
 nnoremap N Nzzzv
+
+"----------------------------------------------
+" Plugin: Shougo/deoplete.vim
+"----------------------------------------------
+let g:deoplete#enable_at_startup = 1
+
+
+"----------------------------------------------
+" Plugin: Shougo/neosnippet.vim
+"----------------------------------------------
+
+" C-k is used to trigger snippet insertion
+imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+xmap <C-k>     <Plug>(neosnippet_expand_target)
+
+" Enable TAB key to jump to next placeholder in a snippet
+smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+\ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+
+"----------------------------------------------
+" Plugin: vim-scripts/YankRing.vim
+"----------------------------------------------
+
+nnoremap <silent><leader>y :YRShow<CR>
 
 "----------------------------------------------
 " Plugin: mileszs/ack.vim
@@ -189,7 +219,7 @@ let g:go_highlight_operators = 1
 let g:go_highlight_build_constraints = 1
 let g:go_highlight_extra_types = 1
 let g:go_auto_sameids = 1
-
+let g:go_auto_type_info = 1
 
 "----------------------------------------------
 " Language: Bash

@@ -35,6 +35,7 @@ else
     echo "Setting up Linux"
     sudo apt-get install silversearcher-ag
     sudo apt-get install wget
+		sudo apt-get install most
 fi
 
 
