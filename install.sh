@@ -32,7 +32,9 @@ if [[ $OSTYPE == "darwin"* ]]; then
     brew install wget
     brew install the_silver_searcher
 else
-    echo "Linux"
+    echo "Setting up Linux"
+    sudo apt-get install silversearcher-ag
+    sudo apt-get install wget
 fi
 
 
