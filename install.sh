@@ -38,7 +38,9 @@ else
 		sudo apt-get install most
 fi
 
-
+if [[ condition ]]; then
+	#statements
+fi
 # Get Python ready
 pip3 install --upgrade pip
 

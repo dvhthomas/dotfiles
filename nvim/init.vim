@@ -1,7 +1,7 @@
+filetype off
 call plug#begin('~/.local/share/nvim/plugged')
 
 " Dependencies
-Plug 'Shougo/neocomplcache'         " Depenency for Shougo/neosnippet
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }       " Autocomplete
 
 " General plugins
@@ -11,13 +11,12 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }   " Fuzzy file
 Plug 'junegunn/fzf.vim'                                " Fuzzy finder in Vim
 Plug 'scrooloose/nerdtree'          " File explorer
 Plug 'mileszs/ack.vim'              " Search in files
-Plug 'Shougo/neosnippet.vim'      " Snippet manager
-Plug 'Shougo/neosnippet-snippets' " Boatload of snippets for many languages
-Plug 'honza/vim-snippets'           " And even more snippets
+Plug 'SirVer/ultisnips'         " Snippet manager
+Plug 'honza/vim-snippets'
 
 " Language support
 
-Plug 'fatih/vim-go'                            " Go support
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }  " Go support
 Plug 'mdempsky/gocode', { 'rtp': 'nvim', 'do': '~/.config/nvim/plugged/gocode/nvim/symlink.sh' }
 Plug 'zchee/deoplete-go', { 'do': 'make'}
 Plug 'aklt/plantuml-syntax'                    " PlantUML syntax highlighting
@@ -99,29 +98,27 @@ nnoremap n nzzzv
 nnoremap N Nzzzv
 
 "----------------------------------------------
+" Plugin: SirVer/ultisnips
+"----------------------------------------------
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+
+" Where custom snippets saved and loaded
+let g:UltiSnipsSnippetsDir="~/dotfiles/nvim/snips"
+let g:UltiSnipsSnippetDirectories=[$HOME.'/dotfiles/nvim/snips']
+
+"----------------------------------------------
 " Plugin: Shougo/deoplete.vim
 "----------------------------------------------
 let g:deoplete#enable_at_startup = 1
 
 
 "----------------------------------------------
-" Plugin: Shougo/neosnippet.vim
-"----------------------------------------------
-
-" C-k is used to trigger snippet insertion
-imap <C-k>     <Plug>(neosnippet_expand_or_jump)
-smap <C-k>     <Plug>(neosnippet_expand_or_jump)
-xmap <C-k>     <Plug>(neosnippet_expand_target)
-
-" Enable TAB key to jump to next placeholder in a snippet
-smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-\ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
-
-"----------------------------------------------
 " Plugin: vim-scripts/YankRing.vim
 "----------------------------------------------
 
-nnoremap <silent><leader>y :YRShow<CR>
+nnoremap <silent><leader>p :YRShow<CR>
 
 "----------------------------------------------
 " Plugin: mileszs/ack.vim
@@ -136,7 +133,6 @@ nnoremap <leader>a :Ack<space>
 " Plugin: scrooloose/nerdtree
 "----------------------------------------------
 nnoremap <leader>d :NERDTreeToggle<cr>
-nnoremap <F2> :NERDTreeToggle<cr>
 
 " Files to ignore
 let NERDTreeIgnore = [
@@ -175,7 +171,7 @@ nmap <Leader>f :Files<CR>
 " -------------------------------------
 
 " Enable powerline fonts.
-let g:airline_powerline_fonts = 0
+let g:airline_powerline_fonts = 1
 
 " -------------------------------------
 " Plugin: w0rp/ale
@@ -188,12 +184,29 @@ let g:ale_sign_warning = '⚠'
 " Enable integration with airline.
 let g:airline#extensions#ale#enabled = 1
 
+" Keep the error gutter displayed even if no errors. Less flicker.
+let g:ale_sign_column_always = 1
+
 " Navigate between errors easily
 nmap <silent> <C-k> <Plug>(ale_previous_wrap)
 nmap <silent> <C-j> <Plug>(ale_next_wrap)
 
-" Use the quickfix window instead let g:ale_set_loclist = 0
+" Use the quickfix window instead
+let g:ale_set_loclist = 0
 let g:ale_set_quickfix = 1
+
+"----------------------------------------------
+" Plugin: fatih/vim-go.vim
+"----------------------------------------------
+
+" Run goimports when running gofmt
+let g:go_fmt_command = "goimports"
+
+" Set neosnippet as snippet engine
+let g:go_snippet_engine = "neosnippet"
+
+" Run multiple error checking tools when saving
+let g:go_metalinter_autosave = 1
 
 "----------------------------------------------
 "" Language: Golang
@@ -203,11 +216,6 @@ au FileType go set shiftwidth=4
 au FileType go set softtabstop=4
 au FileType go set tabstop=4
 
-" Run goimports when running gofmt
-let g:go_fmt_command = "goimports"
-
-" Set neosnippet as snippet engine
-let g:go_snippet_engine = "neosnippet"
 
 " Enable syntax highlighting per default
 let g:go_highlight_types = 1
