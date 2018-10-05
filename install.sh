@@ -21,6 +21,10 @@ ln -s ~/dotfiles/gitconfig ~/.gitconfig
 
 
 git clone https://github.com/Lokaltog/powerline-fonts
+mkdir -p $HOME/.fonts
+ag -g "otf" powerline-fonts | xargs -I{} cp {} ~/.fonts/
+fc-cache -f -v
+rm -rf powerline-fonts
 
 # Do any OS-specific bits
 if [[ $OSTYPE == "darwin"* ]]; then
@@ -38,9 +42,6 @@ else
 		sudo apt-get install most
 fi
 
-if [[ condition ]]; then
-	#statements
-fi
 # Get Python ready
 pip3 install --upgrade pip
 

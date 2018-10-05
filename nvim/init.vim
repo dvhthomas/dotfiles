@@ -29,6 +29,8 @@ Plug 'vim-scripts/YankRing.vim'                 " Manage the clipboard
 " Colorschemes
 Plug 'morhetz/gruvbox'
 Plug 'NLKNguyen/papercolor-theme'
+Plug 'joshdick/onedark.vim'
+Plug 'dracula/vim', { 'as': 'dracula' }
 
 call plug#end()
 
@@ -66,7 +68,6 @@ nnoremap <space> zz
 " Colors
 "----------------------------------------------
 set background=dark
-"colorscheme gruvbox
 colorscheme PaperColor
 
 " Override the search highlight color with a combination that is easier to
