@@ -120,6 +120,7 @@ let g:deoplete#enable_at_startup = 1
 "----------------------------------------------
 
 nnoremap <silent><leader>p :YRShow<CR>
+let g:yankring_history_file = '.yankring_history'
 
 "----------------------------------------------
 " Plugin: mileszs/ack.vim
