@@ -1,5 +1,4 @@
-dotfiles
-========
+# dotfiles
 
 This is where I keep my handy dandy configs for various tools on Mac OS and Linux. Requires installing the tools first using `brew` (Homebrew on Mac) or `apt-get`.
 
