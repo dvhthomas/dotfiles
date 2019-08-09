@@ -13,6 +13,7 @@ Plug 'scrooloose/nerdtree'          " File explorer
 Plug 'mileszs/ack.vim'              " Search in files
 Plug 'SirVer/ultisnips'         " Snippet manager
 Plug 'honza/vim-snippets'
+Plug 'tpope/vim-fugitive'
 
 " Language support
 
@@ -25,12 +26,14 @@ Plug 'leafgarland/typescript-vim'              " TypeScript syntax highlighting
 Plug 'lifepillar/pgsql.vim'                    " PostgreSQL syntax highlighting
 Plug 'skammer/vim-css-color'                    " Not really language per se but colors swatches inline
 Plug 'vim-scripts/YankRing.vim'                 " Manage the clipboard
+Plug 'gisraptor/vim-lilypond-integrator'        " LilyPond music engraver
 
 " Colorschemes
 Plug 'morhetz/gruvbox'
 Plug 'NLKNguyen/papercolor-theme'
 Plug 'joshdick/onedark.vim'
 Plug 'dracula/vim', { 'as': 'dracula' }
+Plug 'rakr/vim-two-firewatch'
 
 call plug#end()
 
@@ -51,8 +54,8 @@ set relativenumber                " show relative numbers in the ruler
 set ruler
 set cursorline                      " Highlight current line of cursor
 set updatetime=100                  " Redraw status bar frequently
-set list                          " show trailing whitespace
-set listchars=tab:→.,trail:.,extends:#,nbsp:.,precedes:<
+"set list                          " show trailing whitespace
+"set listchars=tab:→.,trail:.,extends:#,nbsp:.,precedes:<
 set noshowmode                      " Don't show --- INSERT --- any more; lightline.vim handles it
 
 " Allow vim to set a custom font or color for a word
@@ -143,6 +146,7 @@ let NERDTreeIgnore = [
     \ '^\.DS_Store$',
     \ '^node_modules$',
     \ '^.ropeproject$',
+    \ '^.git$',
     \ '^__pycache__$'
 \]
 
@@ -217,6 +221,7 @@ au FileType go set noexpandtab
 au FileType go set shiftwidth=4
 au FileType go set softtabstop=4
 au FileType go set tabstop=4
+au FileType go set nolist
 
 
 " Enable syntax highlighting per default

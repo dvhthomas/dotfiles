@@ -21,9 +21,9 @@ export TERM=xterm-256color
 # Little helpers
 alias ll="ls -lA"
 
-if [[ $OSTYPE == "darwin"* ]]; then
-	alias ctags="`brew --prefix`/bin/ctags"
-fi
+# if [[ $OSTYPE == "darwin"* ]]; then
+# 	alias ctags="`brew --prefix`/bin/ctags"
+# fi
 
 # Tell fzf that it should use ag instead.
 export FZF_DEFAULT_COMMAND='ag --ignore *.pyc -g ""'
