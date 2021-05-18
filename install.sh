@@ -13,11 +13,6 @@ fi
 
 ln -s ~/dotfiles/gitconfig ~/.gitconfig
 
-#git clone https://github.com/Lokaltog/powerline-fonts
-#mkdir -p $HOME/.fonts
-#ag -g "otf" powerline-fonts | xargs -I{} cp {} ~/.fonts/
-#fc-cache -f -v
-#rm -rf powerline-fonts
 
 # Do any OS-specific bits
 if [[ $OSTYPE == "darwin"* ]]; then
@@ -29,11 +24,10 @@ if [[ $OSTYPE == "darwin"* ]]; then
     export PATH="/usr/local/bin:$PATH"
     echo "Install all the useful software..."
 	brew install htop
-	#brew install --HEAD universal-ctags/universal-ctags/universal-ctags
 	brew install wget
-    brew install tree
+	brew install tree
 	brew install tmux
-    brew install fzf
+        brew install fzf
 	brew install the_silver_searcher
 	brew install nodejs
 	brew tap caskroom/fonts
@@ -45,16 +39,13 @@ if [[ $OSTYPE == "darwin"* ]]; then
 		font-fira-sans
 	brew tap caskroom/cask
 	brew cask install \
-        spectacle \
-        minikube \
+            minikube \
 	    wget \
-        google-cloud-sdk \
+            google-cloud-sdk \
         nvim \
-        pyenv \
         quicklook-json \
         qlmarkdown \
         quicklook-csv
-
     echo "Install all the useful software..."
     brew install zsh
     # ...and now we have zsh, let's point to the correct

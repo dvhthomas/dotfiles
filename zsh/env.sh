@@ -3,19 +3,17 @@
 export CLICOLOR=1
 export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin/sbin"
 
-# Start up pyenv
 alias vim='nvim'
 export EDITOR=nvim
 
-export GOPATH=$HOME/go
-export PATH=${GOPATH}/bin:${PATH}
+export PATH="$PATH:/Users/thomas/bin/flutter/bin"
 
-export FZF_DEFAULT_COMMAND='ag --ignore *.pyc -g ""'
-export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+#export GOPATH=$HOME/go
+#export PATH=${GOPATH}/bin:${PATH}
 
-export PATH="$HOME/.pyenv/bin:$PATH"
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
+#export FZF_DEFAULT_COMMAND='ag --ignore *.pyc -g ""'
+#export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
-source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc'
-source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc'
+export PATH="/usr/local/opt/sqlite/bin:$PATH"
+export DYLD_LIBRARY_PATH=/usr/local/opt/sqlite/lib:/usr/lib
+

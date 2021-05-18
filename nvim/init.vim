@@ -7,9 +7,9 @@ Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }       " Autocomple
 " General plugins
 Plug 'w0rp/ale'                     " Async Lint Engine; add language support below
 Plug 'itchyny/lightline.vim'    " Status bar enhanced
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }   " Fuzzy file finder
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'                                " Fuzzy finder in Vim
-Plug 'scrooloose/nerdtree'          " File explorer
+"Plug 'scrooloose/nerdtree'          " File explorer
 Plug 'mileszs/ack.vim'              " Search in files
 Plug 'SirVer/ultisnips'         " Snippet manager
 Plug 'honza/vim-snippets'
@@ -160,8 +160,8 @@ let NERDTreeShowHidden = 1
 let g:NERDTreeChDirMode = 2
 
 " Open NERDTree if vim is opening a directory
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
+"autocmd StdinReadPre * let s:std_in=1
+"autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
 
 " -------------------------------------
 " Plugin: junegunn/fzf.vim
