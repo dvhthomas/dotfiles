@@ -5,12 +5,11 @@ call plug#begin('~/.local/share/nvim/plugged')
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }       " Autocomplete
 
 " General plugins
-Plug 'w0rp/ale'                     " Async Lint Engine; add language support below
+Plug 'w0rp/ale'                 " Async Lint Engine; add language support below
 Plug 'itchyny/lightline.vim'    " Status bar enhanced
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'                                " Fuzzy finder in Vim
-"Plug 'scrooloose/nerdtree'          " File explorer
-Plug 'mileszs/ack.vim'              " Search in files
+Plug 'junegunn/fzf.vim'         " Fuzzy finder in Vim
+Plug 'scrooloose/nerdtree'      " File explorer
 Plug 'SirVer/ultisnips'         " Snippet manager
 Plug 'honza/vim-snippets'
 Plug 'tpope/vim-fugitive'
@@ -125,14 +124,6 @@ let g:deoplete#enable_at_startup = 1
 nnoremap <silent><leader>p :YRShow<CR>
 let g:yankring_history_file = '.yankring_history'
 
-"----------------------------------------------
-" Plugin: mileszs/ack.vim
-"----------------------------------------------
-
-" Use ag instead
-let g:ackprg = "ag --nogroup --nocolor --column"
-
-nnoremap <leader>a :Ack<space>
 
 "----------------------------------------------
 " Plugin: scrooloose/nerdtree
@@ -159,18 +150,18 @@ let NERDTreeShowHidden = 1
 " Allow NERDTree to change session root.
 let g:NERDTreeChDirMode = 2
 
-" Open NERDTree if vim is opening a directory
-"autocmd StdinReadPre * let s:std_in=1
-"autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
-
 " -------------------------------------
 " Plugin: junegunn/fzf.vim
-" -------------------------------------
+-------------------------------------
 
+let g:fzf_preview_window = ['right:60%', 'ctrl-/']
+
+nmap <leader>a :Ag<space>
 nmap ; :Buffers<CR>
 nmap <Leader>b :Buffers<CR>
 nmap <Leader>h :History<CR>
 nmap <Leader>f :Files<CR>
+nmap <Leader>s :Lines<CR>
 
 " -------------------------------------
 " Plugin: vim-airline/vim-airline

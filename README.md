@@ -1,6 +1,6 @@
 # dotfiles
 
-This is where I keep my handy dandy configs for various tools on Mac OS and Linux. Requires installing the tools first using `brew` (Homebrew on Mac) or `apt-get`.
+This is where I keep my handy dandy configs for various tools on Mac OS and Linux.
 
 ## Prerequisites
 
@@ -8,6 +8,14 @@ This is where I keep my handy dandy configs for various tools on Mac OS and Linu
 
 ## Instructions
 
-1. `cd ~/`
-1. `git clone https://github.com/dvhthomas/dotfiles`
-1. `./dotfiles/install.sh`
+```sh
+cd $HOME
+git clone https://github.com/dvhthomas/dotfiles
+./dotfiles/setup-shell.sh
+```
+
+Probably want to open a new shell at this point and ensure that `zsh` is working as expected.
+
+```sh
+./dotfiles/install.sh
+```
