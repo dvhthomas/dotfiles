@@ -4,7 +4,7 @@ sudo apt-get install build-essential libssl-dev zlib1g-dev \
     libbz2-dev libreadline-dev libsqlite3-dev llvm libncurses5-dev \
     libncursesw5-dev wget curl git -y
 
-sudo apt-get install tree tmux silversearcher-ag bat -y
+sudo apt-get install tree tmux silversearcher-ag bat visidata -y
 
 # Fuzzy Finder
 git clone --depth 1 https://github.com/junegunn/fzf.git $HOME/.fzf

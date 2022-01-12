@@ -5,8 +5,10 @@ brew install wget
 brew install tree
 brew install tmux
 brew install fzf
+. /usr/local/opt/fzf/install
+
 brew install the_silver_searcher
-brew install nodejs
+brew install tig
 brew tap caskroom/fonts
 brew cask install \
     font-source-code-pro \
@@ -16,12 +18,12 @@ brew cask install \
     font-fira-sans
 brew tap caskroom/cask
 brew cask install \
-        minikube \
-        wget \
-        google-cloud-sdk \
-        nvim \
-        quicklook-json \
-        qlmarkdown \
+		minikube \
+		wget \
+		google-cloud-sdk \
+		nvim \
+		quicklook-json \
+		qlmarkdown \
+
 brew cleanup
 
-. /usr/local/opt/fzf/install
