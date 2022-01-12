@@ -7,5 +7,4 @@ else
 fi
 
 alias vim='nvim'
-export EDITOR=nvim
-export ZOG="Hello world"
+export EDITOR=vim

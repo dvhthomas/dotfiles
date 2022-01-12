@@ -152,7 +152,7 @@ let g:NERDTreeChDirMode = 2
 
 " -------------------------------------
 " Plugin: junegunn/fzf.vim
--------------------------------------
+"-------------------------------------
 
 let g:fzf_preview_window = ['right:60%', 'ctrl-/']
 

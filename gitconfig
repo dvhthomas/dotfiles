@@ -2,3 +2,6 @@
     ui = true
 [core]
     pager = less
+[user]
+	email = dvhthomas@gmail.com
+	name = Dylan Thomas
