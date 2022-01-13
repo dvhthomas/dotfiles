@@ -23,6 +23,13 @@ sudo chsh -s $(which zsh) $USER
 # Install Oh My Zshell
 ZSH="$HOME/.local/oh-my-zsh" sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
+# Add a theme
+git clone https://github.com/reobin/typewritten.git $ZSH_CUSTOM/themes/typewritten
+ln -s "$ZSH_CUSTOM/themes/typewritten/typewritten.zsh-theme" "$ZSH_CUSTOM/themes/typewritten.zsh-theme"
+ln -s "$ZSH_CUSTOM/themes/typewritten/async.zsh" "$ZSH_CUSTOM/themes/async"
+sed -i 's/^ZSH_THEME.*/ZSH_THEME="typewritten"/' $HOME/.zshrc
+
+
 # Manage all languages using asdf so let's install it.
 asdf="$HOME/.asdf"
 if [ -d "$asdf" ]; then rm -Rf $asdf; fi
