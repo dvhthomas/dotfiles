@@ -9,3 +9,5 @@ fi
 
 alias vim='nvim'
 export EDITOR=vim
+alias bat='batcat'
+alias cat='bat --style=plain'

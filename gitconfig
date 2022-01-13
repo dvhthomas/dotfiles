@@ -5,3 +5,5 @@
 [user]
 	email = dvhthomas@gmail.com
 	name = Dylan Thomas
+[init]
+	defaultBranch = main

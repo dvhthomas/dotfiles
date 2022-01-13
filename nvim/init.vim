@@ -66,6 +66,13 @@ let mapleader = ','
 " Center screen on the current location when pressing 'Space'
 nnoremap <space> zz
 
+" Window management
+" Use control and motion key to move around window splits
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-H> <C-W><C-H>
+nnoremap <C-L> <C-W><C-L>
+
 "----------------------------------------------
 " Colors
 "----------------------------------------------
