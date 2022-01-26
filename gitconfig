@@ -3,7 +3,12 @@
 [core]
     pager = less
 [user]
-	email = dvhthomas@gmail.com
+	email = 95988001+BitsByD@users.noreply.github.com
 	name = Dylan Thomas
 [init]
 	defaultBranch = main
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
