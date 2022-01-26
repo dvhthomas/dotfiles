@@ -7,18 +7,24 @@
 
 if [[ $OSTYPE == "darwin"* ]]; then
     echo "Installing homebrew..."
-    /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
     # Temporarily tell homebrew where to put things
     export PATH="/usr/local/bin:$PATH"
+
+    # Post-installation for brew
+    echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> /Users/bitsbyd/.zprofile
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+
+    # Now get to business
     brew update
     brew install curl git
-    brew install zsh
+    # brew install zsh
 else
     sudo apt update
     sudo apt-get install git curl -y
+    sudo chsh -s $(which zsh) $USER
 fi
 
-sudo chsh -s $(which zsh) $USER
 
 # Install Oh My Zshell
 ZSH="$HOME/.local/oh-my-zsh" sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"

@@ -1,29 +1,29 @@
 echo "Setting up software for Mac OS"
 xcode-select --install
 brew install htop
+brew install svn
 brew install wget
 brew install tree
 brew install tmux
 brew install fzf
-. /usr/local/opt/fzf/install
+$(brew --prefix)/opt/fzf/install
 
 brew install the_silver_searcher
 brew install tig
-brew tap caskroom/fonts
-brew cask install \
+brew install bat
+brew tap homebrew/cask
+brew tap homebrew/cask-fonts
+brew install \
     font-source-code-pro \
     font-fira-code \
     font-fira-mono \
     font-fira-mono-for-powerline \
-    font-fira-sans
-brew tap caskroom/cask
-brew cask install \
-		minikube \
-		wget \
-		google-cloud-sdk \
-		nvim \
-		quicklook-json \
-		qlmarkdown \
+    font-fira-sans \
+    font-jetbrains-mono
+brew install \
+    nvim \
+    quicklook-json \
+    qlmarkdown \
 
 brew cleanup
 
